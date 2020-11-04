@@ -15,12 +15,11 @@ countSort();
 quickSort();
 insertionSort();
 radixSort();
-selectionSort();
 
-/*const arrayBubbleSort = bubbleSort(testArray);
+const arrayBubbleSort = bubbleSort(testArray);
 console.log('BubbleSort');
 console.log(testArray);
-console.log(arrayBubbleSort);*/
+console.log(arrayBubbleSort);
 
 const arrayMergeSort = mergeSort(testArray);
 console.log('MergeSort');
@@ -31,3 +30,8 @@ const arrayHeapSort = heapSort(testArray);
 console.log('HeapSort');
 console.log(testArray);
 console.log(arrayHeapSort);
+
+const arraySelectionSort = selectionSort(testArray);
+console.log('SelectionSort');
+console.log(testArray);
+console.log(arraySelectionSort);
