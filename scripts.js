@@ -23,6 +23,11 @@ console.log('BubbleSort');
 console.log(testArray);
 console.log(arrayBubbleSort);
 
+const arrayQuickSort = heapSort(testArray);
+console.log('QuickSort');
+console.log(testArray);
+console.log(arrayQuickSort);
+
 const arrayHeapSort = heapSort(testArray);
 console.log('HeapSort');
 console.log(testArray);
