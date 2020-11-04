@@ -10,7 +10,6 @@ import selectionSort from './algoritmos/SelectionSort.js';
 
 const testArray = [5, 1, 8, 99, 2, 123, 992];
 
-bubbleSort();
 bucketSort();
 countSort();
 insertionSort();
@@ -19,6 +18,12 @@ quickSort();
 radixSort();
 selectionSort();
 
-const newArray = heapSort(testArray);
+const arrayBubbleSort = heapSort(testArray);
+console.log('BubbleSort');
 console.log(testArray);
-console.log(newArray);
+console.log(arrayBubbleSort);
+
+const arrayHeapSort = heapSort(testArray);
+console.log('HeapSort');
+console.log(testArray);
+console.log(arrayHeapSort);
