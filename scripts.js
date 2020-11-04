@@ -13,9 +13,12 @@ const testArray = [5, 1, 8, 99, 2, 123, 992];
 bubbleSort();
 bucketSort();
 countSort();
-heapSort();
 insertionSort();
 mergeSort();
 quickSort();
 radixSort();
 selectionSort();
+
+const newArray = heapSort(testArray);
+console.log(testArray);
+console.log(newArray);
