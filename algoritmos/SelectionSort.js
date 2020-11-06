@@ -1,18 +1,31 @@
-export default function selectionSort(arr) {
-  const newArray = [...arr];
-  let len = newArray.length;
-  for (let i = 0; i < len; i++) {
-      let min = i;
-      for (let j = i + 1; j < len; j++) {
-          if (newArray[min] > newArray[j]) {
-              min = j;
-          }
+export default function selectionSort(vetor_) {
+  const vetor = [...vetor_];
+
+  let trocas = 0;
+  let tamanho = vetor.length;
+
+  for (let i = 0; i < tamanho; i++) {
+    let menor = i;
+    for (let j = i + 1; j < tamanho; j++) {
+      if (vetor[menor] > vetor[j]) {
+        menor = j;
       }
-      if (min !== i) {
-          let tmp = newArray[i];
-          newArray[i] = newArray[min];
-          newArray[min] = tmp;
-      }
+    }
+    // console.log(vetor);
+    if (menor !== i) {
+      const tmp = vetor[i];
+      vetor[i] = vetor[menor];
+      vetor[menor] = tmp;
+      // console.log('%cTroca:', 'color: orange', vetor);
+      // console.log(
+      //   `%c${vetor[menor]} %c<-> %c${vetor[i]}`,
+      //   'color: yellow',
+      //   'color: #FE70BD',
+      //   'color: cyan',
+      // );
+      trocas++;
+    }
   }
-  return newArray;
+
+  return [trocas, vetor];
 }

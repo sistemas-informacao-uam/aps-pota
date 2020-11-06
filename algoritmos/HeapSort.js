@@ -6,16 +6,16 @@ function heap_root(input, i) {
   let max = i;
 
   if (left < array_length && input[left] > input[max]) {
-      max = left;
+    max = left;
   }
 
-  if (right < array_length && input[right] > input[max])     {
-      max = right;
+  if (right < array_length && input[right] > input[max]) {
+    max = right;
   }
 
   if (max != i) {
-      swap(input, i, max);
-      heap_root(input, max);
+    swap(input, i, max);
+    heap_root(input, max);
   }
 }
 
@@ -30,15 +30,15 @@ export default function heapSort(input) {
   let newArray = [...input];
   array_length = newArray.length;
 
-  for (let i = Math.floor(array_length / 2); i >= 0; i -= 1)      {
-      heap_root(newArray, i);
+  for (let i = Math.floor(array_length / 2); i >= 0; i -= 1) {
+    heap_root(newArray, i);
   }
 
   for (let i = newArray.length - 1; i > 0; i--) {
-      swap(newArray, 0, i);
-      array_length--;
-    
-      heap_root(newArray, 0);
+    swap(newArray, 0, i);
+    array_length--;
+
+    heap_root(newArray, 0);
   }
 
   return newArray;

@@ -1,29 +1,45 @@
-function merge(left, right) {
-  let result = [],
-      leftLen = left.length,
-      rightLen = right.length,
-      l = 0,
-      r = 0;
-  while (l < leftLen && r < rightLen) {
-      if (left[l] < right[r]) {
-          result.push(left[l]);
-          l++;
-      } else {
-          result.push(right[r]);
-          r++;
-      }
-  }
-  return result.concat(left.slice(l)).concat(right.slice(r));
-};
+let trocas = 0;
+let tamanhoVetorInicial = 0;
 
-export default function mergeSort(array) {
-  const newArray = array;
-  let len = newArray.length;
-  if (len < 2) {
-      return newArray;
+// Para fazer um teste de mesa, basta descomentar os console.log e analisar os resultados
+
+function merge(esquerda, direita) {
+  // console.log('%cMerge:', 'color: orange', esquerda, direita);
+  let resultado = [],
+    tamanhoEsquerda = esquerda.length,
+    tamanhoDireita = direita.length,
+    e = 0,
+    d = 0;
+  while (e < tamanhoEsquerda && d < tamanhoDireita) {
+    if (esquerda[e] < direita[d]) {
+      resultado.push(esquerda[e]);
+      e++;
+    } else {
+      trocas++;
+      resultado.push(direita[d]);
+      d++;
+    }
   }
-  let mid = Math.floor(len / 2),
-      left = newArray.slice(0, mid),
-      right = newArray.slice(mid);
-  return merge(mergeSort(left), mergeSort(right));
-};
+  // console.log(
+  //   'Resultado:',
+  //   resultado.concat(esquerda.slice(e)).concat(direita.slice(d)),
+  // );
+  return resultado.concat(esquerda.slice(e)).concat(direita.slice(d));
+}
+
+export default function mergeSort(vetor_) {
+  if (tamanhoVetorInicial === 0) {
+    tamanhoVetorInicial = vetor_.length;
+  }
+  // console.log('Vetor:', vetor_);
+  const vetor = vetor_;
+  let tamanho = vetor.length;
+  if (tamanho < 2) {
+    return vetor;
+  }
+  let meio = Math.floor(tamanho / 2),
+    esquerda = vetor.slice(0, meio),
+    direita = vetor.slice(meio);
+  const merge_ = merge(mergeSort(esquerda), mergeSort(direita));
+  return merge_.length === tamanhoVetorInicial ? [trocas, merge_] : merge_;
+}
