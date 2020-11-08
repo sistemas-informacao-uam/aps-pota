@@ -11,18 +11,11 @@ export default function selectionSort(vetor_) {
         menor = j;
       }
     }
-    // console.log(vetor);
+
     if (menor !== i) {
       const tmp = vetor[i];
       vetor[i] = vetor[menor];
       vetor[menor] = tmp;
-      // console.log('%cTroca:', 'color: orange', vetor);
-      // console.log(
-      //   `%c${vetor[menor]} %c<-> %c${vetor[i]}`,
-      //   'color: yellow',
-      //   'color: #FE70BD',
-      //   'color: cyan',
-      // );
       trocas++;
     }
   }

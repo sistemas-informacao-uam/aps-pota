@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-  <title>APS POTA</title>
-</head>
-<body>
-  <div class="container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+      integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <title>APS POTA</title>
+  </head>
+  <body>
     <h1>APS POTA</h1>
-  </div>
-  <script src="./scripts.js" type="module"></script>
-</body>
+    <div class="container">
+      <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div>
+
+      <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div>
+
+      <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div>
+
+      <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div>
+
+      <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div>
+
+      <!-- <div class="charts-container">
+        <canvas class="chart" width="400" height="400"></canvas>
+      </div> -->
+    </div>
+
+    <script src="./scripts/index.js" type="module"></script>
+  </body>
 </html>

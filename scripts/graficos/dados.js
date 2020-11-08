@@ -1,11 +1,11 @@
-import bubbleSort from './algoritmos/BubbleSort.js';
-import countSort from './algoritmos/CountSort.js';
-import heapSort from './algoritmos/HeapSort.js';
-import insertionSort from './algoritmos/InsertionSort.js';
-import mergeSort from './algoritmos/MergeSort.js';
-import quickSort from './algoritmos/QuickSort.js';
-import radixSort from './algoritmos/RadixSort.js';
-import selectionSort from './algoritmos/SelectionSort.js';
+import bubbleSort from '../algoritmos/BubbleSort.js';
+import countSort from '../algoritmos/CountSort.js';
+import heapSort from '../algoritmos/HeapSort.js';
+import insertionSort from '../algoritmos/InsertionSort.js';
+import mergeSort from '../algoritmos/MergeSort.js';
+import quickSort from '../algoritmos/QuickSort.js';
+import radixSort from '../algoritmos/RadixSort.js';
+import selectionSort from '../algoritmos/SelectionSort.js';
 
 // 10000 gasta muito tempo para processar
 const esqueletoVetores = {
@@ -102,3 +102,56 @@ function obterMediaDeTrocas(vetores, algoritmo) {
     }) / vetores.length
   );
 }
+
+const data5 = [
+  mediasBubbleSort[5],
+  mediasHeapSort[5],
+  mediasMergeSort[5],
+  mediasSelectionSort[5],
+];
+
+const data10 = [
+  mediasBubbleSort[10],
+  mediasHeapSort[10],
+  mediasMergeSort[10],
+  mediasSelectionSort[10],
+];
+
+const data50 = [
+  mediasBubbleSort[50],
+  mediasHeapSort[50],
+  mediasMergeSort[50],
+  mediasSelectionSort[50],
+];
+
+const data100 = [
+  mediasBubbleSort[100],
+  mediasHeapSort[100],
+  mediasMergeSort[100],
+  mediasSelectionSort[100],
+];
+
+const data1000 = [
+  mediasBubbleSort[1000],
+  mediasHeapSort[1000],
+  mediasMergeSort[1000],
+  mediasSelectionSort[1000],
+];
+
+// const data10000 = [
+//   mediasBubbleSort[10000],
+//   mediasHeapSort[10000],
+//   mediasMergeSort[10000],
+//   mediasSelectionSort[10000],
+// ];
+
+const dataset = [
+  { tamanho: 5, medias: data5 },
+  { tamanho: 10, medias: data10 },
+  { tamanho: 50, medias: data50 },
+  { tamanho: 100, medias: data100 },
+  { tamanho: 1000, medias: data1000 },
+  // { tamanho: 10000, medias: data10000 },
+];
+
+export { dataset };

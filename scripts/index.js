@@ -1,0 +1,1 @@
+import './graficos/gerarGraficos.js';
