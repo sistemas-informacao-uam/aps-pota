@@ -1,45 +1,47 @@
-let array_length;
+let tamanho;
+let trocas = 0;
 
-function heap_root(input, i) {
-  let left = 2 * i + 1;
-  let right = 2 * i + 2;
+function heap_root(vetor, i) {
+  let esquerda = 2 * i + 1;
+  let direita = 2 * i + 2;
   let max = i;
 
-  if (left < array_length && input[left] > input[max]) {
-    max = left;
+  if (esquerda < tamanho && vetor[esquerda] > vetor[max]) {
+    max = esquerda;
   }
 
-  if (right < array_length && input[right] > input[max]) {
-    max = right;
+  if (direita < tamanho && vetor[direita] > vetor[max]) {
+    max = direita;
   }
 
   if (max != i) {
-    swap(input, i, max);
-    heap_root(input, max);
+    swap(vetor, i, max);
+    heap_root(vetor, max);
   }
 }
 
-function swap(input, index_A, index_B) {
-  let temp = input[index_A];
-
-  input[index_A] = input[index_B];
-  input[index_B] = temp;
+function swap(vetor, index_A, index_B) {
+  let temp = vetor[index_A];
+  vetor[index_A] = vetor[index_B];
+  vetor[index_B] = temp;
+  trocas++;
 }
 
-export default function heapSort(input) {
-  let newArray = [...input];
-  array_length = newArray.length;
+export default function heapSort(vetor_) {
+  trocas = 0;
+  let vetor = [...vetor_];
+  tamanho = vetor.length;
 
-  for (let i = Math.floor(array_length / 2); i >= 0; i -= 1) {
-    heap_root(newArray, i);
+  for (let i = Math.floor(tamanho / 2); i >= 0; i -= 1) {
+    heap_root(vetor, i);
   }
 
-  for (let i = newArray.length - 1; i > 0; i--) {
-    swap(newArray, 0, i);
-    array_length--;
+  for (let i = vetor.length - 1; i > 0; i--) {
+    swap(vetor, 0, i);
+    tamanho--;
 
-    heap_root(newArray, 0);
+    heap_root(vetor, 0);
   }
 
-  return newArray;
+  return trocas;
 }

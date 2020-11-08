@@ -27,5 +27,5 @@ export default function selectionSort(vetor_) {
     }
   }
 
-  return [trocas, vetor];
+  return trocas;
 }

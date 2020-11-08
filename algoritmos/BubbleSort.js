@@ -1,19 +1,19 @@
-const bubbleSort = (array, pointer = array.length - 1) => {
-  const newArray = [...array];
+function bubbleSort(_vetor) {
+  let trocas = 0;
 
-  if (pointer === 0) {
-    return newArray;
-  }
+  const vetor = [..._vetor];
 
-  for (let i = 0; i < pointer; i++) {
-    if (newArray[i] > newArray[i + 1]) {
-      let temp = newArray[i + 1];
-      newArray[i + 1] = newArray[i];
-      newArray[i] = temp;
+  for (let i = 0; i < vetor.length; i++) {
+    for (let j = 0; j < vetor.length; j++) {
+      if (vetor[j] > vetor[j + 1]) {
+        let temp = vetor[j];
+        vetor[j] = vetor[j + 1];
+        vetor[j + 1] = temp;
+        trocas++;
+      }
     }
   }
-
-  return bubbleSort(newArray, pointer - 1);
-};
+  return trocas;
+}
 
 export default bubbleSort;

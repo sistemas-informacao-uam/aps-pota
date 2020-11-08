@@ -7,39 +7,98 @@ import quickSort from './algoritmos/QuickSort.js';
 import radixSort from './algoritmos/RadixSort.js';
 import selectionSort from './algoritmos/SelectionSort.js';
 
-// const testArray = [5, 1, 8, 99, 2, 123, 992];
-const testArray = [38, 27, 43, 3, 9, 82, 10];
+// 10000 gasta muito tempo para processar
+const esqueletoVetores = {
+  5: [],
+  10: [],
+  50: [],
+  100: [],
+  1000: [],
+  // 10000: [],
+};
 
-countSort();
-quickSort();
-insertionSort();
-radixSort();
+const vetores = gerarVetores(50, esqueletoVetores);
 
-const arrayBubbleSort = bubbleSort(testArray);
-console.log('BubbleSort');
-console.log(testArray);
-console.log(arrayBubbleSort);
+const mediasBubbleSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasBubbleSort[key] = obterMediaDeTrocas(vetores[key], bubbleSort);
+});
+print('Bubble Sort', mediasBubbleSort);
 
-const [trocasMergeSort, vetorMergeSort] = mergeSort(testArray);
-print('Merge Sort', trocasMergeSort, vetorMergeSort);
+const mediasHeapSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasHeapSort[key] = obterMediaDeTrocas(vetores[key], heapSort);
+});
+print('Heap Sort', mediasHeapSort);
 
-const arrayHeapSort = heapSort(testArray);
-console.log('HeapSort');
-console.log(testArray);
-console.log(arrayHeapSort);
+const mediasMergeSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasMergeSort[key] = obterMediaDeTrocas(vetores[key], mergeSort);
+});
+print('Merge Sort', mediasMergeSort);
 
-const [trocasSelectionSort, vetorSelectionSort] = selectionSort(testArray);
-print('Selection Sort', trocasSelectionSort, vetorSelectionSort);
+const mediasSelectionSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasSelectionSort[key] = obterMediaDeTrocas(vetores[key], selectionSort);
+});
+print('Selection Sort', mediasSelectionSort);
 
-function print(sort, swaps, array) {
+function print(sort, medias) {
   console.log(
-    `%c${sort}\n%cTrocas: %c${swaps}\n%cDefault: %c[${testArray}]\n%cSorted: %c[${array}]`,
+    `%c${sort}\n%cMédia de Trocas:\n${Object.keys(medias)
+      .map(key => {
+        return `%c[${key}]: %c${medias[key]}\n`;
+      })
+      .join('')}`,
     'color: #FE70BD',
     'color: orange',
     'color: cyan',
-    'color: orange',
-    'color: lime',
-    'color: orange',
     'color: yellow',
+    'color: cyan',
+    'color: yellow',
+    'color: cyan',
+    'color: yellow',
+    'color: cyan',
+    'color: yellow',
+    'color: cyan',
+    'color: yellow',
+    // 'color: cyan',
+    // 'color: yellow',
+  );
+}
+
+function gerarVetorDeNumerosAleatorios(tamanho) {
+  const vetor = [];
+
+  for (let i = 0; i < tamanho; i++) {
+    vetor[i] = Math.floor(Math.random() * (99999 + 1));
+  }
+
+  return vetor;
+}
+
+function gerarVetores(quantidade, vetores) {
+  const qtdVetores = quantidade;
+
+  Object.keys(vetores).forEach(key => {
+    for (let i = 0; i < qtdVetores; i++) {
+      vetores[key].push(gerarVetorDeNumerosAleatorios(key));
+    }
+  });
+
+  return vetores;
+}
+
+function obterMediaDeTrocas(vetores, algoritmo) {
+  return (
+    vetores.reduce((acumulador, vetor, index) => {
+      if (index === 1) {
+        return algoritmo(acumulador) + algoritmo(vetor);
+      }
+
+      const trocas = algoritmo(vetor);
+
+      return acumulador + trocas;
+    }) / vetores.length
   );
 }
