@@ -1,7 +1,14 @@
 import { dataset } from './dados.js';
 import configs, { backgroundColor, borderColor } from './configsGraficos.js';
 
-const labels = ['Bubble', 'Heap', 'Merge', 'Selection'];
+const labels = [
+  'Bubble',
+  'Heap',
+  'Merge',
+  'Count Sort',
+  'RadixSort',
+  'Selection',
+];
 
 const ctxs = document.querySelectorAll('.chart');
 

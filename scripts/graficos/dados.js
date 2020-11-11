@@ -37,6 +37,18 @@ Object.keys(vetores).forEach(key => {
 });
 print('Merge Sort', mediasMergeSort);
 
+const mediasCountSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasCountSort[key] = obterMediaDeTrocas(vetores[key], countSort);
+});
+print('Count Sort', mediasCountSort);
+
+const mediasRadixSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasRadixSort[key] = obterMediaDeTrocas(vetores[key], radixSort);
+});
+print('Radix Sort', mediasRadixSort);
+
 const mediasSelectionSort = {};
 Object.keys(vetores).forEach(key => {
   mediasSelectionSort[key] = obterMediaDeTrocas(vetores[key], selectionSort);
@@ -107,6 +119,8 @@ const data5 = [
   mediasBubbleSort[5],
   mediasHeapSort[5],
   mediasMergeSort[5],
+  mediasCountSort[5],
+  mediasRadixSort[5],
   mediasSelectionSort[5],
 ];
 
@@ -114,6 +128,8 @@ const data10 = [
   mediasBubbleSort[10],
   mediasHeapSort[10],
   mediasMergeSort[10],
+  mediasCountSort[10],
+  mediasRadixSort[10],
   mediasSelectionSort[10],
 ];
 
@@ -121,6 +137,8 @@ const data50 = [
   mediasBubbleSort[50],
   mediasHeapSort[50],
   mediasMergeSort[50],
+  mediasCountSort[50],
+  mediasRadixSort[50],
   mediasSelectionSort[50],
 ];
 
@@ -128,6 +146,8 @@ const data100 = [
   mediasBubbleSort[100],
   mediasHeapSort[100],
   mediasMergeSort[100],
+  mediasCountSort[100],
+  mediasRadixSort[100],
   mediasSelectionSort[100],
 ];
 
@@ -135,6 +155,8 @@ const data1000 = [
   mediasBubbleSort[1000],
   mediasHeapSort[1000],
   mediasMergeSort[1000],
+  mediasCountSort[1000],
+  mediasRadixSort[1000],
   mediasSelectionSort[1000],
 ];
 
