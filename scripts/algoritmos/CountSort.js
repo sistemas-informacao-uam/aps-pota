@@ -26,42 +26,24 @@ function algorithmCountSort(vetor, min, max) {
     while (count[i] > 0) {
       if (i !== vetor[j]) {
         trocas++;
-        // console.log(
-        //   `%cNúmeros diferentes: %c${i} x ${vetor[j]}`,
-        //   'color: orange',
-        //   'color: cyan',
-        // );
+        vetor[j] = i;
       } else {
-        // console.log(
-        //   `%cNúmeros iguais: %c${i} x ${vetor[j]}`,
-        //   'color: orange',
-        //   'color: yellow',
-        // );
-
-        // console.log(`\n%cContagem de numeros anterioes:`, 'color: lime');
         let contVezesNumeroApareceVetorOriginal = 0;
-        // console.log(`%cJ: %c${j}`, 'color: yellow', 'color: purple');
         for (let k = 0; k < j; k++) {
-          // console.log(`%c${vetorOriginal[k]} === ${i}`, 'color: cyan');
           if (vetorOriginal[k] === i) {
             contVezesNumeroApareceVetorOriginal++;
           }
         }
-        // console.log(
-        //   `%cTotal: %c${contVezesNumeroApareceVetorOriginal}\n`,
-        //   'color: lime',
-        //   'color: yellow',
-        // );
 
         if (
           qtdVezesNumeroApereceAnteriormenteVetorAtual !==
           contVezesNumeroApareceVetorOriginal
         ) {
           trocas++;
+          vetor[j] = i;
         }
       }
 
-      vetor[j] = i;
       j++;
       count[i]--;
       qtdVezesNumeroApereceAnteriormenteVetorAtual++;
