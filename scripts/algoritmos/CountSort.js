@@ -22,7 +22,7 @@ function algorithmCountSort(vetor, min, max) {
   }
 
   for (let i = min, j = 0; i <= max; i++) {
-    let posicaoValor = 0;
+    let qtdVezesNumeroApereceAnteriormenteVetorAtual = 0;
     while (count[i] > 0) {
       if (i !== vetor[j]) {
         trocas++;
@@ -39,21 +39,24 @@ function algorithmCountSort(vetor, min, max) {
         // );
 
         // console.log(`\n%cContagem de numeros anterioes:`, 'color: lime');
-        let contVezesQueNumeroAparece = 0;
+        let contVezesNumeroApareceVetorOriginal = 0;
         // console.log(`%cJ: %c${j}`, 'color: yellow', 'color: purple');
         for (let k = 0; k < j; k++) {
           // console.log(`%c${vetorOriginal[k]} === ${i}`, 'color: cyan');
           if (vetorOriginal[k] === i) {
-            contVezesQueNumeroAparece++;
+            contVezesNumeroApareceVetorOriginal++;
           }
         }
         // console.log(
-        //   `%cTotal: %c${contVezesQueNumeroAparece}\n`,
+        //   `%cTotal: %c${contVezesNumeroApareceVetorOriginal}\n`,
         //   'color: lime',
         //   'color: yellow',
         // );
 
-        if (posicaoValor !== contVezesQueNumeroAparece) {
+        if (
+          qtdVezesNumeroApereceAnteriormenteVetorAtual !==
+          contVezesNumeroApareceVetorOriginal
+        ) {
           trocas++;
         }
       }
@@ -61,7 +64,7 @@ function algorithmCountSort(vetor, min, max) {
       vetor[j] = i;
       j++;
       count[i]--;
-      posicaoValor++;
+      qtdVezesNumeroApereceAnteriormenteVetorAtual++;
     }
   }
   return trocas;
