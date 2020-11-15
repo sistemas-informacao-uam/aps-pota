@@ -7,23 +7,61 @@ function valorMax(vetor) {
 }
 
 function algorithmCountSort(vetor, min, max) {
-  let trocas = 0;
-  let i = min,
-    j = 0,
-    len = vetor.length,
+  const vetorOriginal = [...vetor];
+  let trocas = 0,
     count = [];
-  for (i; i <= max; i++) {
+
+  const len = vetor.length;
+
+  for (let i = 0; i <= max; i++) {
     count[i] = 0;
   }
-  for (i = 0; i < len; i++) {
+
+  for (let i = 0; i < len; i++) {
     count[vetor[i]] += 1;
   }
-  for (i = min; i <= max; i++) {
+
+  for (let i = min, j = 0; i <= max; i++) {
+    let posicaoValor = 0;
     while (count[i] > 0) {
+      if (i !== vetor[j]) {
+        trocas++;
+        // console.log(
+        //   `%cNúmeros diferentes: %c${i} x ${vetor[j]}`,
+        //   'color: orange',
+        //   'color: cyan',
+        // );
+      } else {
+        // console.log(
+        //   `%cNúmeros iguais: %c${i} x ${vetor[j]}`,
+        //   'color: orange',
+        //   'color: yellow',
+        // );
+
+        // console.log(`\n%cContagem de numeros anterioes:`, 'color: lime');
+        let contVezesQueNumeroAparece = 0;
+        // console.log(`%cJ: %c${j}`, 'color: yellow', 'color: purple');
+        for (let k = 0; k < j; k++) {
+          // console.log(`%c${vetorOriginal[k]} === ${i}`, 'color: cyan');
+          if (vetorOriginal[k] === i) {
+            contVezesQueNumeroAparece++;
+          }
+        }
+        // console.log(
+        //   `%cTotal: %c${contVezesQueNumeroAparece}\n`,
+        //   'color: lime',
+        //   'color: yellow',
+        // );
+
+        if (posicaoValor !== contVezesQueNumeroAparece) {
+          trocas++;
+        }
+      }
+
       vetor[j] = i;
       j++;
       count[i]--;
-      trocas++;
+      posicaoValor++;
     }
   }
   return trocas;
