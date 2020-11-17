@@ -2,12 +2,14 @@ import { dataset } from './dados.js';
 import configs, { backgroundColor, borderColor } from './configsGraficos.js';
 
 const labels = [
-  'Bubble',
-  'Heap',
-  'Merge',
-  'Count Sort',
+  'BubbleSort',
+  'HeapSort',
+  'MergeSort',
+  'CountSort',
   'RadixSort',
-  'Selection',
+  'SelectionSort',
+  'QuickSort',
+  'InsertionSort',
 ];
 
 const ctxs = document.querySelectorAll('.chart');
