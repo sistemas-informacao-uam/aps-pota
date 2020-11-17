@@ -27,7 +27,6 @@ export default function mergeSort(vetor_) {
   if (tamanhoVetorInicial === 0) {
     tamanhoVetorInicial = vetor_.length;
   }
-  // console.log('Vetor:', vetor_);
   const vetor = [...vetor_];
   let tamanho = vetor.length;
   if (tamanho < 2) {

@@ -85,6 +85,12 @@ Object.keys(vetores).forEach(key => {
 });
 print('Quick Sort', mediasQuickSort);
 
+const mediasInsertionSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasInsertionSort[key] = obterMediaDeTrocas(vetores[key], insertionSort);
+});
+print('Insertion Sort', mediasInsertionSort);
+
 function print(sort, medias) {
   console.log(
     `%c${sort}\n%cMédia de Trocas:\n${Object.keys(medias)
@@ -156,6 +162,7 @@ const dataset = Object.keys(esqueletoVetores).map(key => {
       mediasRadixSort[key],
       mediasSelectionSort[key],
       mediasQuickSort[key],
+      mediasInsertionSort[key],
     ],
   };
 });
