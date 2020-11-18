@@ -43,61 +43,68 @@ for (let i in esqueletoVetores) {
 
 const vetores = gerarVetores(50, esqueletoVetores);
 
+const vetorOrdenado = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const vetorComUmItemDesordenado = [2, 1, 3, 4, 5, 6, 7, 8, 9, 10];
+
 const mediasBubbleSort = {};
 Object.keys(vetores).forEach(key => {
   mediasBubbleSort[key] = obterMediaDeTrocas(vetores[key], bubbleSort);
 });
-print('Bubble Sort', mediasBubbleSort);
+print('Bubble Sort', mediasBubbleSort, bubbleSort);
 
 const mediasHeapSort = {};
 Object.keys(vetores).forEach(key => {
   mediasHeapSort[key] = obterMediaDeTrocas(vetores[key], heapSort);
 });
-print('Heap Sort', mediasHeapSort);
+print('Heap Sort', mediasHeapSort, heapSort);
 
 const mediasMergeSort = {};
 Object.keys(vetores).forEach(key => {
   mediasMergeSort[key] = obterMediaDeTrocas(vetores[key], mergeSort);
 });
-print('Merge Sort', mediasMergeSort);
+print('Merge Sort', mediasMergeSort, mergeSort);
 
 const mediasCountSort = {};
 Object.keys(vetores).forEach(key => {
   mediasCountSort[key] = obterMediaDeTrocas(vetores[key], countSort);
 });
-print('Count Sort', mediasCountSort);
+print('Count Sort', mediasCountSort, countSort);
 
 const mediasRadixSort = {};
 Object.keys(vetores).forEach(key => {
   mediasRadixSort[key] = obterMediaDeTrocas(vetores[key], radixSort);
 });
-print('Radix Sort', mediasRadixSort);
+print('Radix Sort', mediasRadixSort, radixSort);
 
 const mediasSelectionSort = {};
 Object.keys(vetores).forEach(key => {
   mediasSelectionSort[key] = obterMediaDeTrocas(vetores[key], selectionSort);
 });
-print('Selection Sort', mediasSelectionSort);
+print('Selection Sort', mediasSelectionSort, selectionSort);
 
 const mediasQuickSort = {};
 Object.keys(vetores).forEach(key => {
   mediasQuickSort[key] = obterMediaDeTrocas(vetores[key], quickSort);
 });
-print('Quick Sort', mediasQuickSort);
+print('Quick Sort', mediasQuickSort, quickSort);
 
 const mediasInsertionSort = {};
 Object.keys(vetores).forEach(key => {
   mediasInsertionSort[key] = obterMediaDeTrocas(vetores[key], insertionSort);
 });
-print('Insertion Sort', mediasInsertionSort);
+print('Insertion Sort', mediasInsertionSort, insertionSort);
 
-function print(sort, medias) {
+function print(sort, medias, algoritmo) {
   console.log(
     `%c${sort}\n%cMédia de Trocas:\n${Object.keys(medias)
       .map(key => {
         return `%c[${key}]: %c${medias[key]}\n`;
       })
-      .join('')}`,
+      .join('')}%cCasos Especiais:\n%c[${vetorOrdenado}]: %c${algoritmo([
+      ...vetorOrdenado,
+    ])}\n%c[${vetorComUmItemDesordenado}]: %c${algoritmo([
+      ...vetorComUmItemDesordenado,
+    ])}\n`,
     'color: #FE70BD',
     'color: orange',
     'color: cyan',
@@ -110,6 +117,11 @@ function print(sort, medias) {
     'color: yellow',
     'color: cyan',
     'color: yellow',
+    desejaFritarSeuPC ? 'color: cyan' : 'color: lime',
+    desejaFritarSeuPC ? 'color: yellow' : 'color: cyan',
+    desejaFritarSeuPC ? 'color: lime' : 'color: yellow',
+    desejaFritarSeuPC ? 'color: cyan' : 'color: cyan',
+    desejaFritarSeuPC ? 'color: yellow' : 'color: yellow',
     desejaFritarSeuPC ? 'color: cyan' : '',
     desejaFritarSeuPC ? 'color: yellow' : '',
   );
