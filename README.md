@@ -3,7 +3,7 @@
 APS de POTA - Arthur, Paulo e Guilherme
 
 <p align=center>
-  <img width="500px" src="https://github.com/sistemas-informacao-uam/aps-pota/tree/master/.github/print.png">
+  <img width="500px" src="https://github.com/sistemas-informacao-uam/aps-pota/blob/master/.github/print.png">
 </p>
 
 ## Alterações nos algortimos
