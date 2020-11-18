@@ -153,6 +153,62 @@ for (let i in vetor) {
 }
 ```
 
+## O que foi desenvolvido para que cada algoritmo ordenasse os mesmos vetores que os demais?
 
+Os vetores são gerados apenas uma vez naquela função de ``gerarVetores`` e ficam armazenados na constante **vetores**  sem ser alterados. A partir disso, fizemos com que toda vez que um vetor fosse passado para os algoritmos, fosse gerada um "cópia" dele para que o vetor original não fosse afetado.
 
+No javascript isso foi feito usando a funcionalidade de desestruturação, em que você usa `...` antes de um objeto (para o javascript um array também é um objeto), e ele faz um espalhamento dos itens daquele objeto. Então nesse caso faço uma desestruturação de **vetor_** para dentro de um novo array e atribuo esse array para a variável **vetor** `const vetor = [...vetor_]`.
 
+Em todos os algoritmos usamos o mesmo princípio, 
+```js
+export default function insertionSort(vetor_) {
+  const vetor = [...vetor_];
+  ...
+}
+```
+
+## Como as médias são geradas?
+
+As médias seguem a mesma estrutura daquele "esqueletoVetores", só que em vez de ter chaves que guardam arrays, essas chavem vão guadar a média de trocas.
+
+Para cada chave (5, 10, 50, 100... - que contém aqueles 50 vetores), é chamada a função ``obterMediaDeTrocas``, em que usamos o ``reduce`` para executar o algortimo escolhido várias vezes (nesse caso 50, porque é o tamanho do vetor). E acumular o retorno (que são as trocas) para gerar um total de trocas, e após isso é feita uma divisão de total de trocas pelo número total de vetores, dessa forma gerando a média.
+
+```js
+const mediasQuickSort = {};
+Object.keys(vetores).forEach(key => {
+  mediasQuickSort[key] = obterMediaDeTrocas(vetores[key], quickSort);
+});
+
+function obterMediaDeTrocas(vetores, algoritmo) {
+  return (
+    vetores.reduce((acumulador, vetor, index) => {
+      if (index === 1) {
+        return algoritmo(acumulador) + algoritmo(vetor);
+      }
+
+      const trocas = algoritmo(vetor);
+
+      return acumulador + trocas;
+    }) / vetores.length
+  );
+}
+```
+
+## Resultados
+
+Em relação ao número de trocas podemos perceber que conforme o número de elementos aumenta, os que se saem melhor são o selection, merge e o count. E já do outro lado, temos o bubble e o insertion (mais pra frente falo mais sobre o insertion) sendo os que mais fazem trocas. 
+
+### Bubble e Insertion
+De longe são os que mais fazem trocas. Com pouco elementos eles ainda acabam ficando abaixo de outros como Heap e Radix, mas quando passa de 15 elementos já começa a crescer muito rápido.
+
+### Heap
+Comparado a maioria ele tem também um alto número de trocas, mas não chega a valores tão absurdos quanto o do bubble.
+
+### Merge, Count e Selection
+Estes são os que menos apresentam trocas, se mantendo em média 2% menor do que o número de elementos no vetor.
+
+### Radix
+O radix apresentou um comportamento interessante, em que ele fica com a média de trocas muito próximo ao número total de itens no vetor multiplicado por 5. Apesar de ser um dos algoritmos mais rápidos, ele fica no meio termo em relação ao número de trocas, ficando com menos trocas que o Heap e mais trocas que os demais citados acima.
+
+### Quick
+O quick tem o comportamento parecido com o do radix, mesmo sendo um dos mais rápido ele continua tendo um número de trocas maior que merge, count e selection.
